@@ -1,0 +1,45 @@
+Questions related to employee table---
+
+a. To select all columns and rows from the employees table,
+SELECT * FROM employees;
+This will return all columns and rows from the employees table as we used SELECT * command.
+
+
+b. To select only the name and salary columns of all employees with a salary greater than 50000,
+SELECT name, salary FROM employees WHERE salary > 50000;
+This will return the name and salary columns of all employees whose salary is greater than 50000 because we use WHERE clause to add condition to our query.
+
+c. To calculate the average salary of all employees,
+SELECT AVG(salary) FROM employees;
+This will return the average salary of all employees as we used AVG on salary column.
+
+d. To count the number of employees who work in the "Marketing" department,
+SELECT COUNT(*) FROM employees WHERE department_id = (SELECT id FROM departments WHERE name = 'Marketing');
+This will return the number of employees who work in the "Marketing" department. For this query we have the department_id from employees table crosschecking with he id from departments table. 
+
+e. To update the salary column of the employee with an id of 1001 to 60000,
+UPDATE employees SET salary = 60000 WHERE id = 1001;
+This will update the salary of the employee with an id of 1001 to 60000. Here we used UPDATE command to update the salary with a specific employee id.
+
+f. To delete all employees whose salary is less than 30000,
+DELETE FROM employees WHERE salary < 30000;
+This will delete all employees whose salary is less than 30000. Here I used DELETE clause with added condition on salary column.
+
+
+Questions related to department table---
+
+a. To select all columns and rows from the departments table,
+SELECT * FROM departments;
+This will return all columns and rows from the departments table.
+
+b. To select only the name and manager columns of the "Finance" department,
+SELECT name, manager FROM departments WHERE name = 'Finance';
+This will return the name and manager columns of the "Finance" department.
+
+c. To calculate the total number of employees in each department,
+SELECT departments.name, COUNT(*) FROM employees JOIN departments ON employees.department_id = departments.id GROUP BY departments.name;
+This will return the name of each department and the total number of employees in that department.Here we used inner join to find out total number of employees in each department.
+
+d. To insert a new department called "Research" with a manager named "John Doe",
+INSERT INTO departments (name, manager) VALUES ('Research', 'John Doe');
+This will insert a new row into the departments table with the name "Research" and manager "John Doe".
